@@ -4,7 +4,7 @@ go 1.22
 
 require (
 	github.com/dal-go/dalgo v0.18.1
-	github.com/dal-go/dalgo-end2end-tests v0.0.46
+	github.com/dal-go/dalgo-end2end-tests v0.0.47
 	github.com/stretchr/testify v1.10.0
 	github.com/tidwall/buntdb v1.3.2
 )
