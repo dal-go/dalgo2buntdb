@@ -33,6 +33,17 @@ type transaction struct {
 	options dal.TransactionOptions
 }
 
+func (t transaction) Exists(ctx context.Context, key *dal.Key) (bool, error) {
+	r := dal.NewRecordWithData(key, &struct{}{})
+	if err := t.Get(ctx, r); err != nil {
+		if dal.IsNotFound(err) {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
+}
+
 func (t transaction) UpdateRecord(ctx context.Context, record dal.Record, updates []update.Update, preconditions ...dal.Precondition) error {
 	return t.Update(ctx, record.Key(), updates, preconditions...)
 }

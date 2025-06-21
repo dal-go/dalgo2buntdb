@@ -11,9 +11,19 @@ type database struct {
 	dal.QueryExecutor
 }
 
+func (dtb database) Exists(ctx context.Context, key *dal.Key) (bool, error) {
+	r := dal.NewRecordWithData(key, &struct{}{})
+	if err := dtb.Get(ctx, r); err != nil {
+		if dal.IsNotFound(err) {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
+}
+
 func (dtb database) ID() string {
-	//TODO implement me
-	panic("implement me")
+	return "buntdb"
 }
 
 func (dtb database) Adapter() dal.Adapter {
