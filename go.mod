@@ -3,7 +3,7 @@ module github.com/dal-go/dalgo2buntdb
 go 1.22
 
 require (
-	github.com/dal-go/dalgo v0.21.1
+	github.com/dal-go/dalgo v0.22.0
 	github.com/dal-go/dalgo-end2end-tests v0.0.55
 	github.com/stretchr/testify v1.10.0
 	github.com/tidwall/buntdb v1.3.2
